@@ -1,12 +1,11 @@
 sanitize tridactyllocal tridactylsync
 
-unbind <ArrowDown>
-unbind <ArrowUp>
-unbind <ArrowLeft>
-unbind <ArrowRight>
+bind --mode=normal <S-ArrowDown> tabprev
+bind --mode=normal <S-ArrowUp> tabnext
+bind --mode=normal <S-ArrowLeft> back
+bind --mode=normal <S-ArrowRight> forward
 
-bind --mode=normal <ArrowDown> scrollline 10
-bind --mode=normal <ArrowUp> scrollline -10
-bind --mode=normal <ArrowLeft> scrollpx -50
-bind --mode=normal <ArrowRight> scrollpx 50
-
+bind --mode=visual <ArrowDown> js document.getSelection().modify("extend","forward","line")
+bind --mode=visual <ArrowUp> js document.getSelection().modify("extend","backward","line")
+bind --mode=visual <ArrowLeft> js document.getSelection().modify("extend","backward","character")
+bind --mode=visual <ArrowRight> js document.getSelection().modify("extend","forward","character")
