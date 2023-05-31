@@ -1,0 +1,20 @@
+brew_taps:
+  - homebrew/cask-fonts
+
+brew_packages:
+  - fish
+  - fd
+  - fzf
+  - git
+  - neovim
+  - tmux
+
+brew_casks:
+  - bitwarden
+  - dozer
+  - firefox
+  - font-mononoki-nerd-font
+  - hammerspoon
+  - iterm2
+  - rectangle
+  - unnaturalscrollwheels

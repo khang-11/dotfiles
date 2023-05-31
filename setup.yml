@@ -1,0 +1,8 @@
+- name: Set up development environment (M1 Laptop)
+  hosts: localhost
+
+  vars_files: ["config.yml"]
+
+  roles:
+    - role: brew
+      tags: ["brew"]
