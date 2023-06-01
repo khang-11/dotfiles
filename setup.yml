@@ -5,8 +5,4 @@
 
   roles:
     - role: brew
-      tags: ["brew"]
-
-  roles:
-    - role: dotfiles
-      tags: ["dotfiles"]
+    - role: stow

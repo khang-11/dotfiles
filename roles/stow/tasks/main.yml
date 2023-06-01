@@ -1,0 +1,4 @@
+- name: Stow dotfiles
+  shell: "stow -v -t {{ ansible_env.HOME }} *"
+  args:
+    chdir: "{{ ansible_env.PWD }}/dotfiles"
