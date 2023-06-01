@@ -1,6 +1,15 @@
-- name: Create system links for dotfiles
+- name: Setup dotfiles
   hosts: localhost
 
   tasks:
-    - name: Import iTerm settings
-      shell: defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string {{ ansible_user_dir }}/dotfiles/iterm/
+    - name: Get list of dotfiles
+      find:
+        paths: "{{ ansible_env.PWD }}/dotfiles"
+        file_type: directory
+      register: folders
+
+    - name: Stow dotfiles
+      command: stow -v -t {{ ansible_env.HOME }} "{{ item.path }}"
+      args:
+        chdir: "{{ ansible_env.PWD }}/dotfiles"
+      loop: "{{ folders.files }}"

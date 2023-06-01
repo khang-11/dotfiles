@@ -11,11 +11,11 @@ brew_packages:
   - tmux
 
 brew_casks:
+  - alacritty
   - bitwarden
   - dozer
   - firefox
   - font-mononoki-nerd-font
   - hammerspoon
-  - iterm2
   - rectangle
   - unnaturalscrollwheels
