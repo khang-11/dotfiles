@@ -7,6 +7,7 @@ brew_packages:
   - fzf
   - git
   - neovim
+  - stow
   - tmux
 
 brew_casks:
