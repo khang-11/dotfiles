@@ -4241,6 +4241,8 @@
 	</dict>
 	<key>PrefsSyncPreferences</key>
 	<true/>
+	<key>QuitWhenAllWindowsClosed</key>
+	<true/>
 	<key>Selection Respects Soft Boundaries</key>
 	<true/>
 	<key>ShowFullScreenTabBar</key>
