@@ -17,5 +17,8 @@ return {
     {"nvim-tree/nvim-tree.lua", config = true},
     {"kylechui/nvim-surround", config = true},
     {"nvim-telescope/telescope.nvim", dependencies = {"nvim-lua/plenary.nvim"}},
-    {"lewis6991/gitsigns.nvim", config = true}
+    {"lewis6991/gitsigns.nvim", config = true},
+    {"windwp/nvim-autopairs", config = true},
+    {"numToStr/Comment.nvim", config = true},
+    {"ggandor/leap.nvim", dependencies = {"tpope/vim-repeat"}, config = true}
 }
