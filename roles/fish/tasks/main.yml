@@ -1,0 +1,11 @@
+- name: Add fish to list of shell
+  shell: "which fish >> /etc/shells"
+
+- name: Make fish default shell
+  shell: "chsh -s /opt/homebrew/bin/fish"
+
+- name: Install fisher
+  shell: "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
+
+- name: Install fish plugins
+  shell: "fisher update"

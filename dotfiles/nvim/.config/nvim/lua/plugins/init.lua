@@ -8,11 +8,12 @@ return {
     {
         "rebelot/kanagawa.nvim",
         opts = function() return require("plugins.config.kanagawa") end
-    }, {
-        "akinsho/bufferline.nvim",
-        dependencies = {"nvim-tree/nvim-web-devicons"},
-        config = true
-    }, {"nvim-lualine/lualine.nvim", config = true},
+    }, -- {
+    --     "akinsho/bufferline.nvim",
+    --     dependencies = {"nvim-tree/nvim-web-devicons"},
+    --     config = true
+    -- },
+    {"nvim-lualine/lualine.nvim", config = true},
     {"nvim-treesitter/nvim-treesitter"},
     {"nvim-tree/nvim-tree.lua", config = true},
     {"kylechui/nvim-surround", config = true},
