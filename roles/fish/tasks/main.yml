@@ -8,13 +8,15 @@
   become: true
   when: fish_in_shell.rc == 1
 
-- name: Check
+- name: Get current user to change default shell
+  shell: "whoami"
+  register: current_user
+
 - name: Make fish default shell
   become: true
-  shell: "chsh -s $(which fish)"
-
-- name: Install fisher
-  shell: "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
-
-- name: Install fish plugins
-  shell: "fisher update"
+  shell: "chsh -s $(which fish) {{ current_user.stdout }}"
+# - name: Install fisher
+#   shell: "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
+#
+# - name: Install fish plugins
+#   shell: "fisher update"
