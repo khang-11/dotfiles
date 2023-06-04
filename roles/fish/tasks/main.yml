@@ -1,8 +1,17 @@
+- name: Check if fish is on list of shells
+  shell: "grep $(which fish) /etc/shells"
+  register: fish_in_shell
+  failed_when: false
+
 - name: Add fish to list of shell
   shell: "which fish >> /etc/shells"
+  become: true
+  when: fish_in_shell.rc == 1
 
+- name: Check
 - name: Make fish default shell
-  shell: "chsh -s /opt/homebrew/bin/fish"
+  become: true
+  shell: "chsh -s $(which fish)"
 
 - name: Install fisher
   shell: "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
