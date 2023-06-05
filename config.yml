@@ -19,3 +19,9 @@ brew_casks:
   - hammerspoon
   - rectangle
   - unnaturalscrollwheels
+
+stow_folders:
+  - alacritty
+  - nvim
+  - tmux
+  - tridactyl

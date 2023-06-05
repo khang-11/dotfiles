@@ -4,6 +4,6 @@
   vars_files: ["config.yml"]
 
   roles:
-    # - role: brew
-    # - role: stow
+    - role: brew
+    - role: stow
     - role: fish
