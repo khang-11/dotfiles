@@ -8,11 +8,6 @@ fish_add_path /opt/homebrew/bin/brew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 alias vim="nvim"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-eval /opt/homebrew/Caskroom/mambaforge/base/bin/conda "shell.fish" "hook" $argv | source
-# <<< conda initialize <<<
-
 #!/usr/bin/fish
 
 # Kanagawa Fish shell theme
@@ -50,3 +45,5 @@ set -g fish_pager_color_progress $comment
 set -g fish_pager_color_prefix $cyan
 set -g fish_pager_color_completion $foreground
 set -g fish_pager_color_description $comment
+
+source "$HOME/.config/fish/local_config.fish"

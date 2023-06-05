@@ -20,15 +20,18 @@
   shell: "fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher'"
 
 - name: Remove plugin config file
-  shell: "rm {{ ansible_env.HOME }}/.config/fish/fish_plugins"
+  shell: "rm -f {{ ansible_env.HOME }}/.config/fish/fish_plugins"
 
 - name: Remove fish config file
-  shell: "rm {{ ansible_env.HOME }}/.config/fish/config.fish"
+  shell: "rm -f {{ ansible_env.HOME }}/.config/fish/config.fish"
 
 - name: Stow fish config
   shell: "stow --no-folding -v -t {{ ansible_env.HOME }} fish"
   args:
     chdir: "{{ ansible_env.PWD }}/dotfiles"
+
+- name: Make local fish config file
+  shell: "touch {{ ansible_env.HOME }}/.config/fish/local_config.fish"
 
 - name: Install fish plugins
   shell: "fish -c 'fisher update'"
