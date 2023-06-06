@@ -1,0 +1,7 @@
+- name: Stow hammerspoon config
+  shell: "stow --no-folding -v -t {{ ansible_env.HOME }} hammerspoon"
+  args:
+    chdir: "{{ ansible_env.PWD }}/dotfiles"
+
+- name: Make local hammerspoon config
+  shell: "touch {{ ansible_env.HOME }}/.hammerspoon/local.lua"
