@@ -7,3 +7,4 @@
     - role: brew
     - role: stow
     - role: fish
+    - role: hammerspoon
