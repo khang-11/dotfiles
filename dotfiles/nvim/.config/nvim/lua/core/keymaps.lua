@@ -6,7 +6,7 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 -- LSP
-local opts = { buffer = bufnr, remap = false }
+local opts = {buffer = bufnr, remap = false}
 vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, opts)
 vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
@@ -26,4 +26,8 @@ vim.keymap.set('n', '<C-u>', function() harpoonUi.nav_file(3) end)
 vim.keymap.set('n', '<C-y>', function() harpoonUi.nav_file(4) end)
 
 -- Misc
-vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
+vim.keymap.set("n", "<leader>-", require("oil").open,
+               {desc = "Open parent directory"})
+vim.keymap.set("n", "<leader>tt", ":NvimTreeToggle<CR>")
+vim.keymap.set("n", "<leader>tf", ":NvimTreeFocus<CR>")
+vim.keymap.set("n", "<leader>tg", ":NvimTreeFindFile<CR>")
