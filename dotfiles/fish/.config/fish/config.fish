@@ -15,8 +15,7 @@ alias vim="nvim"
 # https://github.com/folke/tokyonight.nvim/blob/main/extras/fish_tokyonight_night.fish
 set -l foreground DCD7BA normal
 set -l selection 2D4F67 brcyan
-set -l comment 727169 brblack
-set -l red C34043 red
+set -l comment 727169 brblack set -l red C34043 red
 set -l orange FF9E64 brred
 set -l yellow C0A36E yellow
 set -l green 76946A green

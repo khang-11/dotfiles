@@ -9,8 +9,7 @@ return {
         "rebelot/kanagawa.nvim",
         opts = function() return require("plugins.config.kanagawa") end
     }, {"nvim-lualine/lualine.nvim", config = true},
-    {"nvim-treesitter/nvim-treesitter"},
-    {"kylechui/nvim-surround", config = true}, {
+    {"nvim-treesitter/nvim-treesitter"}, {
         "nvim-telescope/telescope.nvim",
         dependencies = {
             "nvim-lua/plenary.nvim", "debugloop/telescope-undo.nvim"
@@ -39,22 +38,6 @@ return {
     {"lewis6991/gitsigns.nvim", config = true},
     {"windwp/nvim-autopairs", config = true},
     {"numToStr/Comment.nvim", config = true}, {
-        "folke/flash.nvim",
-        event = "VeryLazy",
-        ---@type Flash.Config
-        opts = {},
-        keys = {
-            {
-                "-",
-                mode = {"n", "x", "o"},
-                function()
-                    -- default options: exact mode, multi window, all directions, with a backdrop
-                    require("flash").jump()
-                end,
-                desc = "Flash"
-            }
-        }
-    }, {
         'stevearc/oil.nvim',
         opts = function() return require("plugins.config.oilnvim") end,
         -- Optional dependencies
@@ -62,6 +45,32 @@ return {
     }, {
         'nvim-tree/nvim-tree.lua',
         config = function() require("nvim-tree").setup() end
-    },
-    {'NeogitOrg/neogit', dependencies = 'nvim-lua/plenary.nvim', config = true}
+    }, {
+        "folke/flash.nvim",
+        event = "VeryLazy",
+        ---@type Flash.Config
+        opts = {},
+        -- stylua: ignore
+        keys = {
+            {
+                "s",
+                mode = {"n", "x", "o"},
+                function() require("flash").jump() end,
+                desc = "Flash"
+            }
+        }
+    }, {"tpope/vim-fugitive"}, {
+        "kylechui/nvim-surround",
+        event = "VeryLazy",
+        config = function()
+            require("nvim-surround").setup({
+                keymaps = {
+                    normal = "<leader>ys",
+                    delete = "<leader>ds",
+                    change = "<leader>cs"
+                    -- normal_cur = nil,
+                }
+            })
+        end
+    }
 }

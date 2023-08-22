@@ -26,7 +26,7 @@ vim.keymap.set('n', '<C-u>', function() harpoonUi.nav_file(3) end)
 vim.keymap.set('n', '<C-y>', function() harpoonUi.nav_file(4) end)
 
 -- Misc
-vim.keymap.set("n", "<leader>-", require("oil").open)
+vim.keymap.set("n", "-", require("oil").open)
 vim.keymap.set("n", "<leader>tt", ":NvimTreeToggle<CR>")
 vim.keymap.set("n", "<leader>tf", ":NvimTreeFocus<CR>")
 vim.keymap.set("n", "<leader>tg", ":NvimTreeFindFile<CR>")
