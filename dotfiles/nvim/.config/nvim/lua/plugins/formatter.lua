@@ -21,4 +21,4 @@ local config = function()
 	)
 end
 
-return { "mhartington/formatter.nvim", config = config }
+return { "mhartington/formatter.nvim", event = "VeryLazy", config = config }
