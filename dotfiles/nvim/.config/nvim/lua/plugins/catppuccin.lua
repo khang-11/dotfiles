@@ -1,8 +1,8 @@
-local opts = {flavour = "mocha"}
+local opts = { flavour = "mocha" }
 
 local config = function()
-    require("catppuccin").setup(opts)
-    vim.cmd.colorscheme("catppuccin")
+	require("catppuccin").setup(opts)
+	vim.cmd.colorscheme("catppuccin")
 end
 
-return {"catppuccin/nvim", name = "catppuccin", config = config}
+return { "catppuccin/nvim", name = "catppuccin", config = config }

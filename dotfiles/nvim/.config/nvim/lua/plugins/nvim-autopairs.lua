@@ -1,1 +1,1 @@
-return {"windwp/nvim-autopairs", event = "VeryLazy", config = true}
+return { "windwp/nvim-autopairs", event = "VeryLazy", config = true }

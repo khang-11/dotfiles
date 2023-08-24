@@ -1,1 +1,1 @@
-return {"numToStr/Comment.nvim", event = "VeryLazy", config = true}
+return { "numToStr/Comment.nvim", event = "VeryLazy", config = true }
