@@ -3,10 +3,6 @@ if status is-interactive
     set fish_greeting
     fish_vi_key_bindings
 
-
-    # Brew
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-
     # TokyoNight Color Palette
     set -l foreground c0caf5
     set -l selection 2e3c64
