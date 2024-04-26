@@ -26,6 +26,8 @@ disabled = true
 disabled = true
 [fennel]
 disabled = true
+[gcloud]
+disabled = true
 [golang]
 disabled = true
 [gradle]
