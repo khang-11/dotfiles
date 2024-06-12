@@ -17,11 +17,11 @@ local config = function()
 	vim.keymap.set("n", "<leader>td", function()
 		require("neotest").run.run({ strategy = "dap" })
 	end, { desc = "Debug Test" })
-	vim.keymap.set("n", "<leader>tg", require("dap-go").debug_test, { desc = "Debug Test (Golang)" })
 end
 
 return {
 	"nvim-neotest/neotest",
+	event = "VeryLazy",
 	dependencies = {
 		"nvim-neotest/nvim-nio",
 		"nvim-lua/plenary.nvim",

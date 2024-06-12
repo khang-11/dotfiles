@@ -6,7 +6,7 @@ end
 
 return {
 	"folke/trouble.nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
 	event = "VeryLazy",
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = config,
 }

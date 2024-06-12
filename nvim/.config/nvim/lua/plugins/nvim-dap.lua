@@ -1,9 +1,5 @@
 local config = function()
-	require("neodev").setup({
-		library = { plugins = { "nvim-dap-ui" }, types = true },
-	})
 	require("dapui").setup()
-	require("dap-go").setup()
 
 	require("which-key").register({
 		["<leader>d"] = {
@@ -20,11 +16,10 @@ end
 
 return {
 	"mfussenegger/nvim-dap",
+	event = "VeryLazy",
 	dependencies = {
 		"rcarriga/nvim-dap-ui",
 		"nvim-neotest/nvim-nio",
-		"folke/neodev.nvim",
-		"leoluz/nvim-dap-go",
 	},
 	config = config,
 }

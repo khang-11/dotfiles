@@ -16,6 +16,7 @@ end
 
 return {
 	"nvim-telescope/telescope.nvim",
+	event = "VeryLazy",
 	dependencies = {
 		{ "nvim-lua/plenary.nvim" },
 		{
@@ -23,6 +24,5 @@ return {
 			build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 		},
 	},
-	event = "VeryLazy",
 	config = config,
 }
