@@ -18,6 +18,9 @@ local config = function()
 		},
 	})
 
+	require("copilot").setup()
+	require("copilot_cmp").setup()
+
 	require("luasnip.loaders.from_vscode").lazy_load()
 	local cmp = require("cmp")
 	cmp.setup({
