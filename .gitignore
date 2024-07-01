@@ -5,3 +5,4 @@ fish/.config/fish/functions/
 fish/.config/fish/themes/
 fish/.config/fish/fish_variables
 fish/.config/fish/local_config.fish
+tmux/.config/tmux/plugins/
