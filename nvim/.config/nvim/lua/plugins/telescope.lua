@@ -1,5 +1,12 @@
 local config = function()
-	require("telescope").setup()
+	local ignore_filetypes_list = {
+		"vendor",
+	}
+	require("telescope").setup({
+		defaults = {
+			file_ignore_patterns = ignore_filetypes_list,
+		},
+	})
 	require("telescope").load_extension("fzf")
 
 	require("which-key").register({
