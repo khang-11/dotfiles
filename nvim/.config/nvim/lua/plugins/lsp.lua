@@ -1,7 +1,7 @@
 local config = function()
 	local lsp = require("lsp-zero").preset({})
 	lsp.on_attach(function(client, bufnr)
-		lsp.default_keymaps({ buffer = bufnr })
+		lsp.default_keymaps({ buffer = bufnr, preserve_mappings = false })
 		-- Use Treesitter syntax highlighting
 		client.server_capabilities.semanticTokensProvider = nil
 	end)
