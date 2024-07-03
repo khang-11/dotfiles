@@ -1,6 +1,7 @@
 local config = function()
 	require("conform").setup({
 		formatters_by_ft = {
+			go = { "gofmt", "goimports" },
 			lua = { "stylua" },
 			json = { "prettier" },
 			python = { "isort", "black" },
