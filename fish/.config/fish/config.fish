@@ -44,7 +44,6 @@ if status is-interactive
 
     source "$HOME/.config/fish/local_config.fish"
 
-    fzf --fish | source
     starship init fish | source
     zoxide init fish | source
 end
