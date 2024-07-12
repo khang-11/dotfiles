@@ -42,8 +42,10 @@ if status is-interactive
     alias ls="eza"
     alias vim="nvim"
 
-    source "$HOME/.config/fish/local_config.fish"
+    set -Ux EDITOR nvim
 
     starship init fish | source
     zoxide init fish | source
 end
+
+source "$HOME/.config/fish/local_config.fish"
