@@ -1,0 +1,10 @@
+name: fabric-accounts-universe
+root: ~/workspaces/fabric-accounts/
+
+windows:
+  - universe:
+      panes:
+        - make dependency-up
+  - spanner:
+      panes:
+        - make accounts-localhost

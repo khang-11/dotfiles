@@ -1,0 +1,8 @@
+name: core-specs
+root: ~/workspaces/core-specs/
+
+windows:
+  - neovim:
+      panes:
+        - nvim .
+  - shell:

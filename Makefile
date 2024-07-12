@@ -1,5 +1,15 @@
 link:
-	stow fish hammerspoon nvim starship tmux wezterm
+	stow fish hammerspoon nvim starship tmux tmuxinator wezterm
 
 install:
-	brew install bat eza fd fish fzf hammerspoon neovim node ripgrep starship stow tmux wezterm zoxide
+	brew install bat eza fd fzf hammerspoon neovim node ripgrep starship stow tmux wezterm zoxide
+
+shell:
+	brew install fish
+	chsh -s $(which fish)
+
+setup:
+	make shell
+	fish
+	make install
+	make link
