@@ -1,5 +1,5 @@
 link:
-	stow fish hammerspoon nvim tmux tmuxinator wezterm
+	stow --target=$(HOME) fish hammerspoon nvim tmux tmuxinator wezterm
 
 install:
 	brew install bat eza fd fzf hammerspoon neovim node ripgrep stow tmux tmuxinator wezterm zoxide
