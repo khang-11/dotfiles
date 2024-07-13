@@ -1,11 +1,12 @@
 link:
-	stow fish hammerspoon nvim tmux tmuxinator wezterm
+	stow --adopt fish hammerspoon nvim tmux tmuxinator wezterm
 
 install:
 	brew install bat eza fd fzf hammerspoon neovim node ripgrep stow tmux tmuxinator wezterm zoxide
 
 setup-shell:
 	brew install fish
+	fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
 
 setup-fish:
 	fish -c "fisher update"
