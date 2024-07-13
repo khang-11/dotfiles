@@ -6,6 +6,7 @@ install:
 
 setup-shell:
 	brew install fish
+	touch fish/.config/fish/local_config.fish
 	fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
 
 setup-fish:
