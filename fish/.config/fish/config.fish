@@ -44,8 +44,6 @@ if status is-interactive
 
     set -Ux EDITOR nvim
 
-    starship init fish | source
+    source "$HOME/.config/fish/local_config.fish"
     zoxide init fish | source
 end
-
-source "$HOME/.config/fish/local_config.fish"
