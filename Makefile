@@ -1,5 +1,6 @@
 link:
 	stow --adopt fish hammerspoon nvim tmux tmuxinator wezterm
+	git reset --hard
 
 install:
 	brew install bat eza fd fzf hammerspoon neovim node ripgrep stow tmux tmuxinator wezterm zoxide
