@@ -49,3 +49,5 @@ if status is-interactive
     source "$HOME/.config/fish/local_config.fish"
     zoxide init fish | source
 end
+
+set -u tide_right_prompt_items status cmd_duration time
