@@ -1,7 +1,12 @@
 local config = function()
 	require("lualine").setup({
 		sections = {
-			lualine_b = { "grapple" },
+			lualine_a = {},
+			lualine_b = {},
+			lualine_c = { { "filename", path = 1, shorting_target = 10 } },
+			lualine_x = { "grapple" },
+			lualine_y = { "branch" },
+			lualine_z = { "progress" },
 		},
 	})
 end
