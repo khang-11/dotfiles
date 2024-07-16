@@ -1,0 +1,8 @@
+name: apis
+root: ~/workspaces/apis/
+
+windows:
+  - neovim:
+      panes:
+        - nvim .
+  - shell:
