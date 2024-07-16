@@ -3,7 +3,7 @@ local config = function()
 		sections = {
 			lualine_a = {},
 			lualine_b = {},
-			lualine_c = { { "filename", path = 1, shorting_target = 10 } },
+			lualine_c = { { "filetype", icon_only = true }, { "filename", path = 1, shorting_target = 10 } },
 			lualine_x = { "grapple" },
 			lualine_y = { "branch" },
 			lualine_z = { "progress" },
