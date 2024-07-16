@@ -6,7 +6,7 @@ local config = function()
 			name = "+grapple",
 		},
 	})
-	vim.keymap.set("n", "<leader>mt", require("grapple").toggle, { desc = "Grapple Toggle Mark" })
+	vim.keymap.set("n", "<leader>mm", require("grapple").toggle, { desc = "Grapple Toggle Mark" })
 	vim.keymap.set("n", "<leader>ml", require("grapple").toggle_tags, { desc = "Grapple List Marks" })
 
 	vim.keymap.set("n", "<leader>1", "<cmd>Grapple select index=1<cr>", { desc = "Grapple Select 1" })
