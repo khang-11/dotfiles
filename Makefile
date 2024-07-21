@@ -2,7 +2,8 @@ link:
 	stow --target=$(HOME) fish hammerspoon nvim tmux tmuxinator wezterm
 
 install:
-	brew install bat eza fd fzf hammerspoon neovim node ripgrep stow tmux tmuxinator wezterm zoxide
+	brew install cmake bat eza fd fzf hammerspoon jordanbaird-ice luarocks neovim node ripgrep stow tmux tmuxinator wezterm wget zoxide
+	brew install --cask rectangle
 
 setup-shell:
 	brew install fish
