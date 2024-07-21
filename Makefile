@@ -16,7 +16,7 @@ setup-fish:
 	fish -c  "tide configure --auto --style=Lean --prompt_colors='16 colors' --show_time='24-hour format' --lean_prompt_height='Two lines' --prompt_connection=Disconnected --prompt_spacing=Sparse --icons='Few icons' --transient=No"
 
 setup-tmux:
-	fish -c "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
+	fish -c "[ -d "~/.tmux/plugins/tpm" ] || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
 	fish -c "~/.tmux/plugins/tpm/scripts/install_plugins.sh"
 
 setup:
