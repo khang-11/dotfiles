@@ -1,10 +1,8 @@
 local config = function()
 	require("dapui").setup()
 
-	require("which-key").register({
-		["<leader>d"] = {
-			name = "+debug",
-		},
+	require("which-key").add({
+		{ "<leader>d", group = "debug" },
 	})
 
 	vim.keymap.set("n", "<leader>db", require("dap").toggle_breakpoint, { desc = "Toggle Breakpoint" })

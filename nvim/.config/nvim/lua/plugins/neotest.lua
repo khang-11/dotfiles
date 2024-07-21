@@ -5,10 +5,8 @@ local config = function()
 		},
 	})
 
-	require("which-key").register({
-		["<leader>t"] = {
-			name = "+test",
-		},
+	require("which-key").add({
+		{ "<leader>t", group = "test" },
 	})
 	vim.keymap.set("n", "<leader>tt", require("neotest").run.run, { desc = "Run Test" })
 	vim.keymap.set("n", "<leader>tf", function()

@@ -9,10 +9,8 @@ local config = function()
 	})
 	require("telescope").load_extension("fzf")
 
-	require("which-key").register({
-		["<leader>f"] = {
-			name = "+search",
-		},
+	require("which-key").add({
+		{ "<leader>f", group = "search" },
 	})
 	vim.keymap.set("n", "<leader>ff", require("telescope.builtin").git_files, { desc = "Git Files" })
 	vim.keymap.set("n", "<leader>fa", require("telescope.builtin").find_files, { desc = "All Files" })

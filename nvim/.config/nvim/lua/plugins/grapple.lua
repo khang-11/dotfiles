@@ -1,10 +1,8 @@
 local config = function()
 	require("grapple").setup({})
 
-	require("which-key").register({
-		["<leader>m"] = {
-			name = "+grapple",
-		},
+	require("which-key").add({
+		{ "<leader>m", group = "grapple" },
 	})
 	vim.keymap.set("n", "<leader>mm", require("grapple").toggle, { desc = "Grapple Toggle Mark" })
 	vim.keymap.set("n", "<leader>ml", require("grapple").toggle_tags, { desc = "Grapple List Marks" })
