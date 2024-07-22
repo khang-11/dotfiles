@@ -1,12 +1,12 @@
 name: dotfiles
-root: ~/dotfiles/
+root: ~/workspaces/dotfiles/
 
 windows:
   - neovim-dotfiles:
       panes:
         - nvim .
   - neovim-local:
-      root: ~/local_config/
+      root: ~/workspaces/local_config/
       panes:
         - nvim .
   - shell:
