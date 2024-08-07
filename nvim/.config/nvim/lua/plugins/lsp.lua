@@ -25,11 +25,11 @@ local config = function()
 	local cmp = require("cmp")
 	cmp.setup({
 		sources = {
-			{ name = "nvim_lsp" },
 			{ name = "buffer" },
-			{ name = "path" },
-			{ name = "luasnip" },
 			{ name = "copilot" },
+			{ name = "nvim_lsp" },
+			{ name = "luasnip" },
+			{ name = "path" },
 		},
 		mapping = cmp.mapping.preset.insert({
 			["<CR>"] = cmp.mapping.confirm({ select = false }),
@@ -50,15 +50,17 @@ return {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",
-		"hrsh7th/cmp-nvim-lsp",
+
 		"hrsh7th/nvim-cmp",
 		"hrsh7th/cmp-buffer",
+		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-path",
+		"saadparwaiz1/cmp_luasnip",
+		"zbirenbaum/copilot-cmp",
+
 		"l3mon4d3/luasnip",
 		"rafamadriz/friendly-snippets",
-		"saadparwaiz1/cmp_luasnip",
 		"zbirenbaum/copilot.lua",
-		"zbirenbaum/copilot-cmp",
 	},
 	event = "VeryLazy",
 	config = config,
