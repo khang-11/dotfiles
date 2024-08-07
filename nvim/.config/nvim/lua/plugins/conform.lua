@@ -1,6 +1,7 @@
 local config = function()
 	require("conform").setup({
 		formatters_by_ft = {
+			c = { "clang-format" },
 			go = { "gofmt", "goimports" },
 			lua = { "stylua" },
 			proto = { "buf" },
