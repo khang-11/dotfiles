@@ -5,11 +5,11 @@ local config = function()
 				enable = true,
 				lookahead = true,
 				keymaps = {
-					["p"] = { query = "@parameter.inner", desc = "Select parameter" },
-					["s"] = { query = "@statement.outer", desc = "Select statement" },
+					["sp"] = { query = "@parameter.inner", desc = "Select parameter" },
+					["ss"] = { query = "@statement.outer", desc = "Select statement" },
 
-					["aa"] = { query = "@assignment.lhs", desc = "Select LHS of assignment" },
-					["ia"] = { query = "@assignment.rhs", desc = "Select RHS of assignment" },
+					["aa"] = { query = "@assignment.rhs", desc = "Select LHS of assignment" },
+					["ia"] = { query = "@assignment.lhs", desc = "Select RHS of assignment" },
 					["ac"] = { query = "@call.outer", desc = "Select outer call" },
 					["ic"] = { query = "@call.inner", desc = "Select inner call" },
 					["ai"] = { query = "@conditional.outer", desc = "Select outer conditional" },
