@@ -1,9 +1,6 @@
 local config = function()
 	require("neogit").setup()
-
-	vim.keymap.set("n", "<leader>g", function()
-		require("neogit").open({ kind = "split_above" })
-	end, { desc = "Git" })
+	vim.keymap.set("n", "<leader>g", require("neogit").open, { desc = "Git" })
 end
 
 return {
