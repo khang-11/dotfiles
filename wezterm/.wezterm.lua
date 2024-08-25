@@ -7,13 +7,15 @@ config.enable_tab_bar = false
 config.window_padding = {
 	left = 30,
 	right = 30,
-	top = 30,
+	top = 80,
 	bottom = 30,
 }
 config.font = wezterm.font({
 	family = "JetBrains Mono",
 	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 })
+
+config.window_decorations = "INTEGRATED_BUTTONS"
 
 local window_opacity = 0.9
 config.window_background_opacity = window_opacity
