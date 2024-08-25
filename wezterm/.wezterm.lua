@@ -15,4 +15,22 @@ config.font = wezterm.font({
 	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 })
 
+local window_opacity = 0.9
+config.window_background_opacity = window_opacity
+config.macos_window_background_blur = 20
+
+wezterm.on("toggle-opacity", function(window, pane)
+	local overrides = window:get_config_overrides() or {}
+	if overrides.window_background_opacity == 1.0 then
+		overrides.window_background_opacity = window_opacity
+	else
+		overrides.window_background_opacity = 1.0
+	end
+	window:set_config_overrides(overrides)
+end)
+
+config.keys = {
+	{ key = "t", mods = "CTRL", action = wezterm.action.EmitEvent("toggle-opacity") },
+}
+
 return config
