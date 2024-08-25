@@ -17,11 +17,11 @@ config.font = wezterm.font({
 
 config.window_decorations = "INTEGRATED_BUTTONS"
 
-local window_opacity = 0.9
+local window_opacity = 0.95
 config.window_background_opacity = window_opacity
-config.macos_window_background_blur = 20
+config.macos_window_background_blur = 10
 
-wezterm.on("toggle-opacity", function(window, pane)
+wezterm.on("toggle-opacity", function(window, _)
 	local overrides = window:get_config_overrides() or {}
 	if overrides.window_background_opacity == 1.0 then
 		overrides.window_background_opacity = window_opacity
