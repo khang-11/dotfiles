@@ -7,7 +7,7 @@ config.enable_tab_bar = false
 config.window_padding = {
 	left = 30,
 	right = 30,
-	top = 80,
+	top = 40,
 	bottom = 30,
 }
 config.font = wezterm.font({
@@ -17,16 +17,15 @@ config.font = wezterm.font({
 
 config.window_decorations = "INTEGRATED_BUTTONS"
 
-local window_opacity = 0.95
-config.window_background_opacity = window_opacity
-config.macos_window_background_blur = 10
+local window_opacity = 0.9
+config.macos_window_background_blur = 20
 
 wezterm.on("toggle-opacity", function(window, _)
 	local overrides = window:get_config_overrides() or {}
-	if overrides.window_background_opacity == 1.0 then
+	if not overrides.window_background_opacity then
 		overrides.window_background_opacity = window_opacity
 	else
-		overrides.window_background_opacity = 1.0
+		overrides.window_background_opacity = nil
 	end
 	window:set_config_overrides(overrides)
 end)
