@@ -1,8 +1,0 @@
-name: fabric-accounts-outbox-pipeline
-root: ~/workspaces/fabric-accounts-outbox-pipeline/
-
-windows:
-  - neovim:
-      panes:
-        - nvim .
-  - shell:

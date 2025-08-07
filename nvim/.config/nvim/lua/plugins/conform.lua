@@ -4,6 +4,7 @@ local config = function()
 			c = { "clang-format" },
 			go = { "gofmt", "goimports" },
 			lua = { "stylua" },
+			kotlin = { "ktlint" },
 			proto = { "buf" },
 			python = { "isort", "black" },
 			typescriptreact = { "prettierd" },

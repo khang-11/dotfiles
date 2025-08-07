@@ -1,9 +1,9 @@
 link:
-	stow --target=$(HOME) fish hammerspoon nvim tmux tmuxinator wezterm
+	stow --target=$(HOME) aerospace fish ghostty nvim tmux tmuxinator
 
 install:
-	brew install cmake bat eza fd fzf hammerspoon jordanbaird-ice luarocks neovim node ripgrep stow tmux tmuxinator wezterm wget zoxide
-	brew install --cask rectangle
+	brew tap FelixKratz/formulae
+	brew install cmake bat borders eza fd fzf jordanbaird-ice luarocks neovim node ripgrep stow tmux tmuxinator wget zoxide
 
 setup-shell:
 	brew install fish
