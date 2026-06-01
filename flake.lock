@@ -19,16 +19,16 @@
     "brew-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1778427648,
-        "narHash": "sha256-pt9KaDGsMyYWB9JeHs4XGHs870f1lOZe3vx9LpVIhUE=",
+        "lastModified": 1780279130,
+        "narHash": "sha256-JsmlxuyApC5TR0pmROdBFwKT4RSMa7DoxQsFt3yaNcE=",
         "owner": "Homebrew",
         "repo": "brew",
-        "rev": "6f293daa9f9f5832e13b497976335e90509886d7",
+        "rev": "28d1032df297777442cf84e97af72c87d3d98ac3",
         "type": "github"
       },
       "original": {
         "owner": "Homebrew",
-        "ref": "5.1.11",
+        "ref": "master",
         "repo": "brew",
         "type": "github"
       }
@@ -140,7 +140,9 @@
     },
     "nix-homebrew": {
       "inputs": {
-        "brew-src": "brew-src"
+        "brew-src": [
+          "brew-src"
+        ]
       },
       "locked": {
         "lastModified": 1778851564,
@@ -175,6 +177,7 @@
     "root": {
       "inputs": {
         "anomalyco-tap": "anomalyco-tap",
+        "brew-src": "brew-src",
         "felixkratz-tap": "felixkratz-tap",
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",

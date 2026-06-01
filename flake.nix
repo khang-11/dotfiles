@@ -11,7 +11,14 @@
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    brew-src = {
+      url = "github:Homebrew/brew/master";
+      flake = false;
+    };
+    nix-homebrew = {
+      url = "github:zhaofengli-wip/nix-homebrew";
+      inputs.brew-src.follows = "brew-src";
+    };
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
       flake = false;
@@ -98,6 +105,10 @@
               user = username;
               autoMigrate = true;
               mutableTaps = false;
+              package = inputs.brew-src // {
+                name = "brew-master";
+                version = "master";
+              };
               taps = {
                 "homebrew/homebrew-core" = inputs.homebrew-core;
                 "homebrew/homebrew-cask" = inputs.homebrew-cask;

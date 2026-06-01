@@ -28,15 +28,6 @@
     };
   };
 
-  networking = {
-    computerName = username;
-    hostName = username;
-    dns = [
-      "8.8.8.8"
-      "8.8.4.4"
-    ];
-  };
-
   users = {
     knownUsers = [
       username

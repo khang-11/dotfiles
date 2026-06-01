@@ -3,21 +3,24 @@
 {
   homebrew = {
     enable = true;
-    onActivation.cleanup = "zap";
+    onActivation = {
+      cleanup = "zap";
+      extraFlags = [
+        "--force"
+      ];
+    };
 
     taps = builtins.attrNames config.nix-homebrew.taps;
 
     brews = [
       "anomalyco/tap/opencode"
       "borders"
-      "flyctl"
       "gh"
     ];
 
     casks = [
       "aerospace"
       "bitwarden"
-      "caffeine"
       "discord"
       "docker-desktop"
       "ghostty"
@@ -32,7 +35,6 @@
       "spotify"
       "stremio"
       "visual-studio-code"
-      "zoom"
     ];
   };
 }
