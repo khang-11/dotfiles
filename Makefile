@@ -1,27 +1,28 @@
-link:
-	stow --target=$(HOME) aerospace fish ghostty nvim tmux tmuxinator
+DOTFILES_PATH ?= $(CURDIR)
+USERNAME ?= khang
+SYSTEM ?= $(shell if command -v nix >/dev/null 2>&1; then nix eval --impure --raw --expr 'builtins.currentSystem'; elif [ "$$(uname -s)" = Darwin ] && [ "$$(uname -m)" = arm64 ]; then printf aarch64-darwin; elif [ "$$(uname -s)" = Darwin ] && [ "$$(uname -m)" = x86_64 ]; then printf x86_64-darwin; elif [ "$$(uname -s)" = Linux ] && [ "$$(uname -m)" = aarch64 ]; then printf aarch64-linux; elif [ "$$(uname -s)" = Linux ] && [ "$$(uname -m)" = x86_64 ]; then printf x86_64-linux; else printf unknown; fi)
+HOME_CONFIGURATION ?= $(USERNAME)@$(SYSTEM)
+DARWIN_CONFIGURATION ?= $(USERNAME)@$(SYSTEM)
+DARWIN_REBUILD ?= darwin-rebuild
+DARWIN_REBUILD_FRESH ?= nix run github:nix-darwin/nix-darwin/master\#darwin-rebuild --
+NIX_DAEMON_PROFILE ?= /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 
-install:
-	brew tap FelixKratz/formulae
-	brew install cmake bat borders eza fd fzf jordanbaird-ice luarocks neovim node ripgrep stow tmux tmuxinator wget zoxide
+.PHONY: check darwin fresh-mac home install-nix install-xcode
 
-setup-shell:
-	brew install fish
-	touch fish/.config/fish/local_config.fish
-	fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
-	rm $(HOME)/.config/fish/fish_plugins
+check:
+	DOTFILES_PATH="$(DOTFILES_PATH)" nix flake check path:. --impure
 
-setup-fish:
-	fish -c "fisher update"
-	fish -c  "tide configure --auto --style=Lean --prompt_colors='16 colors' --show_time='24-hour format' --lean_prompt_height='Two lines' --prompt_connection=Disconnected --prompt_spacing=Sparse --icons='Few icons' --transient=No"
+home:
+	DOTFILES_PATH="$(DOTFILES_PATH)" home-manager switch --flake path:.#$(HOME_CONFIGURATION) --impure
 
-setup-tmux:
-	fish -c "[ -d "~/.tmux/plugins/tpm" ] || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
-	fish -c "~/.tmux/plugins/tpm/scripts/install_plugins.sh"
+darwin:
+	sudo env DOTFILES_PATH="$(DOTFILES_PATH)" $(DARWIN_REBUILD) switch --flake path:.#$(DARWIN_CONFIGURATION) --impure
 
-setup:
-	make setup-shell
-	fish -c "make install"
-	fish -c "make link"
-	fish -c "make setup-fish"
-	fish -c "make setup-tmux"
+darwin-init: install-xcode install-nix darwin
+	. "$(NIX_DAEMON_PROFILE)" 2>/dev/null || true; sudo env DOTFILES_PATH="$(DOTFILES_PATH)" PATH="$$PATH" $(DARWIN_REBUILD_FRESH) switch --flake path:.#$(DARWIN_CONFIGURATION) --impure
+
+install-xcode:
+	xcode-select -p >/dev/null 2>&1 || xcode-select --install
+
+install-nix:
+	command -v nix >/dev/null 2>&1 || sh -c "$$(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install)"
