@@ -13,7 +13,6 @@
     taps = builtins.attrNames config.nix-homebrew.taps;
 
     brews = [
-      "anomalyco/tap/opencode"
       "borders"
       "gh"
     ];

@@ -35,10 +35,6 @@
       url = "github:FelixKratz/homebrew-formulae";
       flake = false;
     };
-    anomalyco-tap = {
-      url = "github:anomalyco/homebrew-tap";
-      flake = false;
-    };
   };
 
   outputs = inputs@{ home-manager, nix-darwin, nix-homebrew, nixpkgs, ... }:
@@ -79,7 +75,12 @@
       ];
 
       mkHome = system: home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs { inherit system; };
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+            "claude-code"
+          ];
+        };
         extraSpecialArgs = {
           inherit dotfilesPath;
         };
@@ -98,6 +99,9 @@
           ./home/darwin/homebrew.nix
           {
             nixpkgs.hostPlatform = system;
+            nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+              "claude-code"
+            ];
 
             nix-homebrew = {
               enable = true;
@@ -114,7 +118,6 @@
                 "homebrew/homebrew-cask" = inputs.homebrew-cask;
                 "nikitabobko/homebrew-tap" = inputs.nikitabobko-tap;
                 "FelixKratz/homebrew-formulae" = inputs.felixkratz-tap;
-                "anomalyco/homebrew-tap" = inputs.anomalyco-tap;
               };
             };
 
