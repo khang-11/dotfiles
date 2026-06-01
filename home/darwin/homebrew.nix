@@ -24,6 +24,7 @@
       "docker-desktop"
       "ghostty"
       "google-chrome"
+      "helium-browser"
       "homerow"
       "iina"
       "moonlight"

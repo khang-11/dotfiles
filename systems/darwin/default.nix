@@ -52,7 +52,7 @@
         orientation = "left";
         persistent-apps = [
           {
-            app = "/Applications/Google Chrome.app";
+            app = "/Applications/Helium.app";
           }
           {
             app = "/Applications/Ghostty.app";
