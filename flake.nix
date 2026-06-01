@@ -12,10 +12,31 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+    nikitabobko-tap = {
+      url = "github:nikitabobko/homebrew-tap";
+      flake = false;
+    };
+    felixkratz-tap = {
+      url = "github:FelixKratz/homebrew-formulae";
+      flake = false;
+    };
+    anomalyco-tap = {
+      url = "github:anomalyco/homebrew-tap";
+      flake = false;
+    };
   };
 
-  outputs = inputs@{ home-manager, nixpkgs, ... }:
+  outputs = inputs@{ home-manager, nix-darwin, nix-homebrew, nixpkgs, ... }:
     let
+      lib = nixpkgs.lib;
       username = "khang";
       supportedSystems = [
         "aarch64-darwin"
@@ -23,28 +44,77 @@
         "aarch64-linux"
         "x86_64-linux"
       ];
+      darwinSystems = [
+        "aarch64-darwin"
+        "x86_64-darwin"
+      ];
       dotfilesPathEnv = builtins.getEnv "DOTFILES_PATH";
       dotfilesPath =
         if dotfilesPathEnv == "" then null else dotfilesPathEnv;
+      isDarwin = system: builtins.match ".*-darwin" system != null;
+
+      mkHomeModules = system: [
+        ./home/common
+        {
+          home = {
+            inherit username;
+            homeDirectory =
+              if isDarwin system
+              then "/Users/${username}"
+              else "/home/${username}";
+            stateVersion = "25.05";
+          };
+
+          programs.home-manager.enable = true;
+        }
+      ] ++ lib.optionals (isDarwin system) [
+        ./home/darwin/darwin.nix
+      ];
 
       mkHome = system: home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs { inherit system; };
         extraSpecialArgs = {
           inherit dotfilesPath;
         };
+        modules = mkHomeModules system;
+      };
+
+      mkDarwin = system: nix-darwin.lib.darwinSystem {
+        inherit system;
+        specialArgs = {
+          inherit username;
+        };
         modules = [
-          ./home/common
+          nix-homebrew.darwinModules.nix-homebrew
+          home-manager.darwinModules.home-manager
+          ./systems/darwin
+          ./home/darwin/homebrew.nix
           {
-            home = {
-              inherit username;
-              homeDirectory =
-                if builtins.match ".*-darwin" system != null
-                then "/Users/${username}"
-                else "/home/${username}";
-              stateVersion = "25.05";
+            nixpkgs.hostPlatform = system;
+
+            nix-homebrew = {
+              enable = true;
+              enableRosetta = system == "aarch64-darwin";
+              user = username;
+              autoMigrate = true;
+              mutableTaps = false;
+              taps = {
+                "homebrew/homebrew-core" = inputs.homebrew-core;
+                "homebrew/homebrew-cask" = inputs.homebrew-cask;
+                "nikitabobko/homebrew-tap" = inputs.nikitabobko-tap;
+                "FelixKratz/homebrew-formulae" = inputs.felixkratz-tap;
+                "anomalyco/homebrew-tap" = inputs.anomalyco-tap;
+              };
             };
 
-            programs.home-manager.enable = true;
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = {
+                inherit dotfilesPath;
+              };
+              users.${username}.imports = mkHomeModules system;
+            };
           }
         ];
       };
@@ -54,5 +124,10 @@
         name = "${username}@${system}";
         value = mkHome system;
       }) supportedSystems);
+
+      darwinConfigurations = builtins.listToAttrs (map (system: {
+        name = "${username}@${system}";
+        value = mkDarwin system;
+      }) darwinSystems);
     };
 }

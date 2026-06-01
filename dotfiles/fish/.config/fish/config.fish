@@ -44,9 +44,13 @@ if status is-interactive
 
     set -Ux EDITOR nvim
 
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+    if test -x /opt/homebrew/bin/brew
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+    end
 
-    source "$HOME/.config/fish/local_config.fish"
+    if test -f "$HOME/.config/fish/local_config.fish"
+        source "$HOME/.config/fish/local_config.fish"
+    end
     zoxide init fish | source
 end
 
