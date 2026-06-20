@@ -44,6 +44,9 @@
     primaryUser = username;
     stateVersion = 6;
     defaults = {
+      CustomUserPreferences."com.apple.symbolichotkeys".AppleSymbolicHotKeys = {
+          "64".enabled = false; # disable cmd + space
+      };
       controlcenter = {
         BatteryShowPercentage = true;
       };
@@ -73,6 +76,7 @@
       };
       smb.NetBIOSName = username;
     };
+    activationScripts.postActivation.text = ''sudo -u ${username} /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u''; # avoid logout cycle when changing settings
   };
 
   security.pam.services.sudo_local.touchIdAuth = true;
