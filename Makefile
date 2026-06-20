@@ -1,10 +1,10 @@
 DOTFILES_PATH ?= $(CURDIR)
 USERNAME ?= khang
-SYSTEM ?= $(shell if command -v nix >/dev/null 2>&1; then nix eval --impure --raw --expr 'builtins.currentSystem'; elif [ "$$(uname -s)" = Darwin ] && [ "$$(uname -m)" = arm64 ]; then printf aarch64-darwin; elif [ "$$(uname -s)" = Darwin ] && [ "$$(uname -m)" = x86_64 ]; then printf x86_64-darwin; elif [ "$$(uname -s)" = Linux ] && [ "$$(uname -m)" = aarch64 ]; then printf aarch64-linux; elif [ "$$(uname -s)" = Linux ] && [ "$$(uname -m)" = x86_64 ]; then printf x86_64-linux; else printf unknown; fi)
+SYSTEM ?= $(shell if command -v nix >/dev/null 2>&1; then nix eval --extra-experimental-features "nix-command flakes" --impure --raw --expr 'builtins.currentSystem'; elif [ "$$(uname -s)" = Darwin ] && [ "$$(uname -m)" = arm64 ]; then printf aarch64-darwin; elif [ "$$(uname -s)" = Darwin ] && [ "$$(uname -m)" = x86_64 ]; then printf x86_64-darwin; elif [ "$$(uname -s)" = Linux ] && [ "$$(uname -m)" = aarch64 ]; then printf aarch64-linux; elif [ "$$(uname -s)" = Linux ] && [ "$$(uname -m)" = x86_64 ]; then printf x86_64-linux; else printf unknown; fi)
 HOME_CONFIGURATION ?= $(USERNAME)@$(SYSTEM)
 DARWIN_CONFIGURATION ?= $(USERNAME)@$(SYSTEM)
 DARWIN_REBUILD ?= darwin-rebuild
-DARWIN_REBUILD_FRESH ?= nix run github:nix-darwin/nix-darwin/master\#darwin-rebuild --
+DARWIN_REBUILD_FRESH ?= nix --extra-experimental-features "nix-command flakes" run github:nix-darwin/nix-darwin/master\#darwin-rebuild --
 NIX_DAEMON_PROFILE ?= /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 
 .PHONY: check darwin fresh-mac home install-nix install-xcode
@@ -18,7 +18,7 @@ home:
 darwin:
 	sudo env DOTFILES_PATH="$(DOTFILES_PATH)" $(DARWIN_REBUILD) switch --flake path:.#$(DARWIN_CONFIGURATION) --impure
 
-darwin-init: install-xcode install-nix darwin
+darwin-init:
 	. "$(NIX_DAEMON_PROFILE)" 2>/dev/null || true; sudo env DOTFILES_PATH="$(DOTFILES_PATH)" PATH="$$PATH" $(DARWIN_REBUILD_FRESH) switch --flake path:.#$(DARWIN_CONFIGURATION) --impure
 
 install-xcode:
