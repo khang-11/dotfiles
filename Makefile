@@ -19,6 +19,7 @@ darwin:
 	sudo env DOTFILES_PATH="$(DOTFILES_PATH)" $(DARWIN_REBUILD) switch --flake path:.#$(DARWIN_CONFIGURATION) --impure
 
 darwin-init:
+	sudo rm -f /etc/bashrc /etc/zshrc
 	. "$(NIX_DAEMON_PROFILE)" 2>/dev/null || true; sudo env DOTFILES_PATH="$(DOTFILES_PATH)" PATH="$$PATH" $(DARWIN_REBUILD_FRESH) switch --flake path:.#$(DARWIN_CONFIGURATION) --impure
 
 install-xcode:
