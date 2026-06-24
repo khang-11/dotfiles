@@ -18,15 +18,11 @@ local config = function()
 		},
 	})
 
-	require("copilot").setup()
-	require("copilot_cmp").setup()
-
 	require("luasnip.loaders.from_vscode").lazy_load()
 	local cmp = require("cmp")
 	cmp.setup({
 		sources = {
 			{ name = "buffer" },
-			{ name = "copilot" },
 			{ name = "nvim_lsp" },
 			{ name = "luasnip" },
 			{ name = "path" },
@@ -56,11 +52,9 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-path",
 		"saadparwaiz1/cmp_luasnip",
-		"zbirenbaum/copilot-cmp",
 
 		"l3mon4d3/luasnip",
 		"rafamadriz/friendly-snippets",
-		"zbirenbaum/copilot.lua",
 	},
 	event = "VeryLazy",
 	config = config,
