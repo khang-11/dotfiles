@@ -24,7 +24,6 @@
       "docker-desktop"
       "ghostty"
       "google-chrome"
-      "helium-browser"
       "homerow"
       "iina"
       "moonlight"
@@ -34,6 +33,7 @@
       "raycast"
       "spotify"
       "stremio"
+      "tailscale"
       "visual-studio-code"
     ];
   };
