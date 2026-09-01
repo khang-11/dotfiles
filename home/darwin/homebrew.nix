@@ -15,10 +15,12 @@
     brews = [
       "borders"
       "gh"
+      "pi-coding-agent"
     ];
 
     casks = [
       "aerospace"
+      "autodesk-fusion"
       "bitwarden"
       "discord"
       "docker-desktop"
@@ -33,7 +35,7 @@
       "raycast"
       "spotify"
       "stremio"
-      "tailscale"
+      "tailscale-app"
       "visual-studio-code"
     ];
   };
